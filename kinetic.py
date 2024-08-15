@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul  7 09:57:49 2017
-
-@author: CHOI
-"""
-
+#%%
 import numpy as np
 from scipy.optimize import curve_fit
 import pylab
@@ -68,3 +62,5 @@ ss_res=np.sum(residuals**2)
 ss_tot=np.sum((y-np.mean(y))**2)
 r2=1-(ss_res/ss_tot)
 print(r2)
+
+# %%
