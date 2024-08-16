@@ -3,10 +3,10 @@ import numpy as np
 from scipy.optimize import curve_fit
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
+from read_csv import readfile
 
-#change it to reading CSV function and read data from csv files and transfrom it to np.array
-x=np.array([30,60,90,120,240,360,540,1440,2880,4320])
-y=np.array([66.31, 82.66, 91.09, 102.77, 127.80, 152.48, 179.30, 236.17,281.58,296.13])
+filename='test.csv'
+x,y=readfile(filename)
 
 #Below is Nth model and utilize ODE to fit models. Initial guess didn't work
 def f(y,t,a,b):
