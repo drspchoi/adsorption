@@ -2,6 +2,9 @@ import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 
+"""
+First part is for kinetic model equations
+"""
 #Below is Nth model and utilize ODE to fit models. Initial guess didn't work
 def f(y,t,a,b):
     return a*(b-y)**1; "a=k1, b=Qe, y=Qt,c=n" 
@@ -23,6 +26,18 @@ def first(time,a,b):
 def intra(time,a,b):
     return a*time**0.5+b
 
+"""
+Second part is for adsorption equilibrium model equations
+"""
+def langmuir(concent,a,b):
+    return a*b*concent/(1+b*concent)
+
+def Frue(concent,k,f):
+    return k*concent**f
+
+"""
+Third part is for R2 and graph
+"""
 def r_square(x,y,model,popt):
     residuals=y-model(x,*popt)
     ss_res=np.sum(residuals**2)
