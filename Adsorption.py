@@ -3,7 +3,9 @@ import numpy as np
 from scipy.optimize import curve_fit
 from read_csv import readfile
 from adsorption_model import norder, second, first, intra, langmuir, Frue, r_square, graph
-#from flask import Flask, render_template
+from flask import Flask, render_template
+
+app=Flask(__name__)
 
 filename='test.csv'
 x,y=readfile(filename)
@@ -38,4 +40,10 @@ for key, model in isotherm_models.items():
     r_2=r_square(x,y,model,popt)
     graph(x,y,xdata,ydata,key,r_2)    
 
+@app.get('/')
+def plot():
+    return render_template('adsorption_plot.html')
+
+if __name__== '__main__':
+    app.run(debug=True)
 # %%
