@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
+import os
 
 """
 First part is for kinetic model equations
@@ -53,3 +54,5 @@ def graph(x,y,xdata,ydata,key, r_2):
     plt.legend()
     plt.xlabel('time')
     plt.ylabel('concentration')
+    plt.savefig("static/images/"+key+".png")
+    
