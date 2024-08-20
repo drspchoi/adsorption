@@ -2,7 +2,6 @@
 import csv
 import numpy as np
 
-filename='test.csv'
 def readfile(filename):
     with open(filename, mode='r', encoding='utf-8-sig') as file:
         csvFile=csv.reader(file)

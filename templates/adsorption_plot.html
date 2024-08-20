@@ -2,10 +2,24 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
     <title>Adsortion model graphs</title>
 </head>
 
 <body>
+    <h1>Adsorption kinetic model data upload</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose a file for kinetic models:</label>
+        <input type="file" id="file" name="file" accept="*" />
+        <button type="submit">upload</button>
+        <br><br>
+        <label for="file2">Choose a file for isotherm models:</label>
+        <input type="file" id="file2" name="file2" accept="*" />
+        <button type="submit">upload</button>
+        <br><br>
+    </form>
+
     <h1>Adsorption kinetic model graphs</h1>
     <img src="{{url_for('static', filename='images/First-order model.png')}}">
     <img src="{{url_for('static', filename='images/Second-order model.png')}}">
