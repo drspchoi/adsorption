@@ -5,7 +5,8 @@ from flask import Flask, render_template, request
 
 app=Flask(__name__)
 
-#8/19 Get input from HTML and run scripts (done 8/20). Make a selection list. HTML shows the graph for selected models. 
+#8/19 Get input from HTML and run scripts (done 8/20). Make a selection list. HTML shows the graph for selected models (done 8/21).
+#8/21 Need to make multiple selection possible (done 8/22). Also conditional display needs to be done" 
 
 @app.get('/')
 def index():
@@ -22,15 +23,16 @@ def upload():
         file=request.files['file']
         if file.filename:
             x,y=readfile(file.filename)
-            selection=request.form['Kinetic_model']
-            selection=[selection]
+            selection=request.form.getlist('Kinetic_model')
+            print(selection)
             kinetic_models(x,y,selection)
 
     if 'file2' in request.files:
         file2=request.files['file2']
         if file2.filename:
             x,y=readfile(file2.filename)
-            isotherm_models(x,y)
+            selection=request.form.getlist('isotherm_model')
+            isotherm_models(x,y,selection)
 
     return render_template('adsorption_plot.html')
 

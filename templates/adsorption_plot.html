@@ -12,9 +12,8 @@
     <form action="/upload" method="post" enctype="multipart/form-data">
         <label for="file">Choose a file for kinetic models:</label>
         <input type="file" id="file" name="file" accept="*" />
-        <br><br>
         <label for="Kinetic_model">Choose kinetic models</label>
-        <select name="Kinetic_model">
+        <select name="Kinetic_model" multiple>
             <option value="First-order model" >First order model</option>
             <option value="Second-order model">Seconde order model</option>
             <option value="Nth-order model">Nth order model</option>
@@ -23,7 +22,13 @@
         <br><br>
         <label for="file2">Choose a file for isotherm models:</label>
         <input type="file" id="file2" name="file2" accept="*" />
-        <button type="submit">upload</button>
+        <label for="Kinetic_model">Choose kinetic models</label>
+        <select name="isotherm_model" multiple>
+            <option value="Langmuir" >Langmuir model</option>
+            <option value="Frue">Frue model</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
         <br><br>
     </form>
   
@@ -31,7 +36,7 @@
     <img src="{{url_for('static', filename='images/First-order model.png')}}">
     <img src="{{url_for('static', filename='images/Second-order model.png')}}">
     <img src="{{url_for('static', filename='images/Nth-order model.png')}}">
-    <img src="{{url_for('static', filename='images/Intra-Diffusion model.png')}}">
+    <img src="{{url_for('static', filename='images/Intra-diffusion model.png')}}">
     <h1>Adsorption isotherm model graphs</h1>
     <img src="{{url_for('static', filename='images/Langmuir.png')}}">
     <img src="{{url_for('static', filename='images/Frue.png')}}">
