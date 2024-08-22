@@ -57,17 +57,17 @@ def graph(x,y,xdata,ydata,key, r_2):
     plt.ylabel('concentration')
     plt.savefig("static/images/"+key+".png")
 
-def kinetic_models(x,y):
+def kinetic_models(x,y,selection):
     kinetic_models={'First-order model': first, 'Second-order model': second, 
             'Nth-order model': norder, 'Intra-Diffusion model': intra}
 
-    for key, model in kinetic_models.items():
+    for key in selection:
     
         if key=='Nth-order model':
             params=[0.02,50,0.5]
         else:
             params=[0, 0.1]
-    
+        model=kinetic_models[key]
         popt,pcov=curve_fit(model,x,y, p0=params)
         xdata=np.linspace(0,x.max(),400)
         ydata=model(xdata,*popt)
