@@ -59,7 +59,7 @@ def graph(x,y,xdata,ydata,key, r_2):
 
 def kinetic_models(x,y,selection):
     kinetic_models={'First-order model': first, 'Second-order model': second, 
-            'Nth-order model': norder, 'Intra-Diffusion model': intra}
+            'Nth-order model': norder, 'Intra-diffusion model': intra}
 
     for key in selection:
     
@@ -75,12 +75,13 @@ def kinetic_models(x,y,selection):
         graph(x,y,xdata,ydata,key,r_2)
 
 
-def isotherm_models(x,y):
+def isotherm_models(x,y,selection):
     isotherm_models={'Langmuir': langmuir, 'Frue': Frue}
 
-    for key, model in isotherm_models.items():
+    for key in selection:
 
         params=[100,0.1]
+        model=isotherm_models[key]
         popt,pcov=curve_fit(model,x,y, p0=params)
         xdata=np.linspace(0,x.max(),100)
         ydata=model(xdata,*popt)

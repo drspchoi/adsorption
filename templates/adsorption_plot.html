@@ -29,17 +29,22 @@
         </select>
         <br><br>
         <button type="submit">Submit</button>
+        <button type="clear">Clear</button>
         <br><br>
     </form>
   
     <h1>Adsorption kinetic model graphs</h1>
-    <img src="{{url_for('static', filename='images/First-order model.png')}}">
-    <img src="{{url_for('static', filename='images/Second-order model.png')}}">
-    <img src="{{url_for('static', filename='images/Nth-order model.png')}}">
-    <img src="{{url_for('static', filename='images/Intra-diffusion model.png')}}">
+    {%for model in kinetic %}
+    <img src="{{url_for('static', filename='images/'+model+'.png')}}">
+    {% endfor %}
     <h1>Adsorption isotherm model graphs</h1>
-    <img src="{{url_for('static', filename='images/Langmuir.png')}}">
-    <img src="{{url_for('static', filename='images/Frue.png')}}">
+    {%for model in adsorption %}
+    <img src="{{url_for('static', filename='images/'+model+'.png')}}">
+    {% endfor %}
 </body>
 
 </html>
+
+
+      
+
