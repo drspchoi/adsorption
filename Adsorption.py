@@ -28,20 +28,21 @@ def upload():
         file=request.files['file']
         if file.filename:
             file_path=os.path.join(app.config['upload'], file.filename)
-            file.save(file_path)
-            print(file.filename)        
-            x,y=readfile(file.filename)
+            file.save(file_path)        
+            x,y=readfile(file_path)
             selection=request.form.getlist('Kinetic_model')
             kinetic_models(x,y,selection)
+        os.remove(file_path)
 
     if 'file2' in request.files:
         file2=request.files['file2']
         if file2.filename !='':
             file2_path=os.path.join(app.config['upload'], file2.filename)
             file2.save(file2_path)             
-            x,y=readfile(file2.filename)
+            x,y=readfile(file2_path)
             selection2=request.form.getlist('isotherm_model')
             isotherm_models(x,y,selection2)
+        os.remove(file2_path)
 
     return render_template('adsorption_plot.html', kinetic=selection, adsorption=selection2)
 
