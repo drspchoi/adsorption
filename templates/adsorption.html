@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adsorption Model Graphs</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left panel: File uploads and inputs -->
+        <div class="left-panel">
+            <h1>Adsorption Test Data Upload</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="file">Choose a file for kinetic models:</label>
+                <input type="file" id="file" name="file" accept="*" />
+
+                <label for="Kinetic_model">Choose kinetic models</label>
+                <select name="Kinetic_model" multiple>
+                    <option value="First-order model">First-order model</option>
+                    <option value="Second-order model">Second-order model</option>
+                    <option value="Nth-order model">Nth-order model</option>
+                    <option value="Intra-diffusion model">Intra-diffusion model</option>
+                </select>
+
+                <label for="file2">Choose a file for isotherm models:</label>
+                <input type="file" id="file2" name="file2" accept="*" />
+
+                <label for="isotherm_model">Choose isotherm models</label>
+                <select name="isotherm_model" multiple>
+                    <option value="Langmuir">Langmuir model</option>
+                    <option value="Frue">Frue model</option>
+                </select>
+
+                <button type="submit">Submit</button>
+                <button type="clear">Clear</button>
+            </form>
+        </div>
+
+        <!-- Right panel: Display generated images -->
+        <div class="right-panel">
+            <h1>Adsorption Kinetic Model Graphs</h1>
+            {% for model in kinetic %}
+            <img src="{{ url_for('static', filename='images/' + model + '.png') }}" alt="Kinetic Model Graph">
+            {% endfor %}
+
+            <h1>Adsorption Isotherm Model Graphs</h1>
+            {% for model in adsorption %}
+            <img src="{{ url_for('static', filename='images/' + model + '.png') }}" alt="Isotherm Model Graph">
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

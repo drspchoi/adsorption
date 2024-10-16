@@ -1,0 +1,76 @@
+    /* Apply styling to the body and root layout */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        height: 100vh;
+    }
+
+    /* Flex container to split page into two frames */
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    /* Left frame for input and upload */
+    .left-panel {
+        width: 40%;
+        padding: 20px;
+        background-color: #f0f0f0;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Right frame for generated images */
+    .right-panel {
+        width: 60%;
+        padding: 20px;
+        overflow-y: auto;
+        background-color: #ffffff;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input[type="file"],
+    select {
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    button {
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    button[type="clear"] {
+        background-color: #6c757d;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    .right-panel img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        display: block;
+    }
